@@ -6,9 +6,8 @@ export const ContactForm = () => {
   return (
     <Formik
       initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
+        Name: '',
+        Number: '',
       }}
       onSubmit={async values => {
         await new Promise(r => setTimeout(r, 500));
@@ -16,20 +15,25 @@ export const ContactForm = () => {
       }}
     >
       <Form>
-        <label htmlFor="firstName">First Name</label>
-        <Field id="firstName" name="firstName" placeholder="Jane" />
-
-        <label htmlFor="lastName">Last Name</label>
-        <Field id="lastName" name="lastName" placeholder="Doe" />
-
-        <label htmlFor="email">Email</label>
+        <label htmlFor="name">Name</label>
         <Field
-          id="email"
-          name="email"
-          placeholder="jane@acme.com"
-          type="email"
+          type="text"
+          name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
         />
-        <button type="submit">Submit</button>
+
+        <label htmlFor="number">Number</label>
+        <Field
+          type="tel"
+          name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
+
+        <button type="submit">Add contact</button>
       </Form>
     </Formik>
   );
