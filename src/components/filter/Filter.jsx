@@ -31,3 +31,16 @@ export const Filter = ({ contacts, filter, onDelete, onFind }) => {
     </>
   );
 };
+
+Filter.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  filter: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onFind: PropTypes.func.isRequired,
+};

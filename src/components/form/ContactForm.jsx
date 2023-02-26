@@ -61,3 +61,7 @@ export const ContactForm = ({ addContact }) => {
     </Formik>
   );
 };
+
+ContactForm.propTypes = {
+  addContact: PropTypes.func.isRequired,
+};

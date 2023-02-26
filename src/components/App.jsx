@@ -50,16 +50,11 @@ export class App extends Component {
         <GlobalStyle />
 
         <h1>Phonebook</h1>
-        <ContactForm
-          contacts={this.state.contacts}
-          addContact={this.addContact}
-        ></ContactForm>
+        <ContactForm addContact={this.addContact}></ContactForm>
 
         <Filter
           contacts={this.state.contacts}
           filter={this.state.filter}
-          name={this.state.name}
-          number={this.state.number}
           onDelete={this.deleteItem}
           onFind={this.findItem}
         >
