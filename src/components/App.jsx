@@ -14,12 +14,22 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
-  addItem = (addName, addNumber, id) => {
-    console.log(`adddd`);
+  addContact = newContacts => {
+    if (
+      this.state.contacts.some(
+        item => item.name.toLowerCase() === newContacts.name.toLowerCase()
+      )
+    ) {
+      return alert(`${newContacts.name} is already exist in contacts`);
+    }
+
+    this.setState(pervState => {
+      return {
+        contacts: [...pervState.contacts, newContacts],
+      };
+    });
   };
 
   findItem = findName => {
@@ -40,8 +50,11 @@ export class App extends Component {
         <GlobalStyle />
 
         <h1>Phonebook</h1>
-        <ContactForm></ContactForm>
-        <h2>Contacts</h2>
+        <ContactForm
+          contacts={this.state.contacts}
+          addContact={this.addContact}
+        ></ContactForm>
+
         <Filter
           contacts={this.state.contacts}
           filter={this.state.filter}
@@ -49,7 +62,6 @@ export class App extends Component {
           number={this.state.number}
           onDelete={this.deleteItem}
           onFind={this.findItem}
-          // addItem={this.addItem}
         >
           {' '}
         </Filter>

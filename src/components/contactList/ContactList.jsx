@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
+import { ContactCard, ContactLst } from './contactList.styles';
 
 export const ContactList = ({ contacts, nameFind, onDelete }) => {
   return (
     <>
-      <ul>
+      <ContactLst>
         {contacts.map(item => (
-          <li className="item" key={item.id}>
+          <ContactCard className="item" key={item.id}>
             {item.name.toLowerCase().includes(nameFind.toLowerCase()) && (
               <>
                 <p>{item.name}</p>
@@ -13,9 +14,9 @@ export const ContactList = ({ contacts, nameFind, onDelete }) => {
                 <button onClick={() => onDelete(item.id)}>Delete</button>
               </>
             )}
-          </li>
+          </ContactCard>
         ))}
-      </ul>
+      </ContactLst>
     </>
   );
 };
