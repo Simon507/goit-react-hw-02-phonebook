@@ -4,6 +4,7 @@ import { Layout } from './Layout';
 import { Component } from 'react';
 import { ContactForm } from './form/ContactForm';
 import { Filter } from './filter/Filter';
+import { ContactList } from 'components/contactList/ContactList';
 
 export class App extends Component {
   state = {
@@ -51,15 +52,14 @@ export class App extends Component {
 
         <h1>Phonebook</h1>
         <ContactForm addContact={this.addContact}></ContactForm>
+        <h2>Contacts</h2>
+        <Filter onFind={this.findItem}> </Filter>
 
-        <Filter
-          contacts={this.state.contacts}
-          filter={this.state.filter}
+        <ContactList
           onDelete={this.deleteItem}
-          onFind={this.findItem}
-        >
-          {' '}
-        </Filter>
+          contacts={this.state.contacts}
+          nameFind={this.state.filter}
+        ></ContactList>
       </Layout>
     );
   }
